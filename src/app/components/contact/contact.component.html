@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h1>Pseudo Shop</h1>
+    </div>
+    <div class="col-6">
+      <h1>Where we are</h1>
+      <button *ngFor="let sty of style" type="button" class="btn btn-primary"
+              (click)="mapStyle = sty.styles"
+      >{{sty.title}}</button>
+      <agm-map
+        [latitude]="center.lat"
+        [longitude]="center.lng"
+        [zoom]="mapZoom"
+        [styles]="mapStyle">
+        <agm-marker
+          *ngFor="let mark of markers"
+          [latitude]="mark.coordinates.lat"
+          [longitude]="mark.coordinates.lng"
+        >
+          <agm-info-window>
+            <h3>{{mark.title}}</h3>
+          </agm-info-window>
+        </agm-marker>
+      </agm-map>
+    </div>
+  </div>
+</div>
