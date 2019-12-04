@@ -1,1 +1,21 @@
-<p>products works!</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center">Best Deals</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3" *ngFor="let p of products">
+      <a [routerLink]="'/product/' + p._id ">
+        <img [src]="p.photo" class="img-fluid product-image"/>
+        <div>{{p.name}}</div>
+      </a>
+      <div class="product-prices">
+        <div class="text-right"  [class.lt]="p.sale">{{p.price}}&euro;</div>
+        <div *ngIf="p.sale" class="text-right">{{p.sale}}&euro;</div>
+      </div>
+      <button class="btn btn-primary btn-block">Add to cart</button>
+    </div>
+  </div>
+</div>
